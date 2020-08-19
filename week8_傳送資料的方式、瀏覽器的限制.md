@@ -145,7 +145,7 @@ request.addEventListener('load', function () {
 - `<img>` ：圖片沒有安全性問題
 - `<script>`：能夠引入不同源的 JS
 
-#### JSONP
+#### JSOPN
 
 - JSON，全名是 JSON with padding，這裡的 padding 是填充的意思
 - 是資料格式JSON的一種「使用模式」，和 CORS 同樣能讓網頁從別的網域要資料
