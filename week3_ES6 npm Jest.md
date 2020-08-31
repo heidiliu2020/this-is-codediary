@@ -1,5 +1,5 @@
 ###### tags: `JavaScript` `npm`
-# [week 3] JavaScript 技能：ES6 + npm + Jest
+# [week 3] JavaScript：ES6 語法 + npm + Jest
 
 > 本篇為 [JS102] 升級你的 JavaScript 技能：ES6 + npm + Jest (https://lidemy.com/p/js102-javascript-es6-npm) 這門課程的學習筆記。如有錯誤歡迎指正！
 
