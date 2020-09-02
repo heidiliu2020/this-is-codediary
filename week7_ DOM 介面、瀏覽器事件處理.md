@@ -296,7 +296,6 @@ element.addEventListener('click', function(){
 ```
 
 #### 3. useCapture
-
 - 可選
 - 布林值，指定事件在捕獲或冒泡階段執行
   1. true：補獲
