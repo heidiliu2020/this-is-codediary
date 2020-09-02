@@ -144,7 +144,6 @@
 3. unmodified（未修改的）：代表檔案第一次被加入，或檔案內容與 `HEAD` 內容一致的狀態
 4. modified（已修改的）：代表檔案已經被編輯過，或檔案內容與 `HEAD` 內容不一致的狀態
 
-
 ### 補充 2：設定帳號和姓名
 
 第一次輸入 `git commit` 指令時出現錯誤，跳出需要設定帳號和姓名的畫面，這時需輸入以下指令：
@@ -152,7 +151,6 @@
 git config --global user.name "your name"　　//  "換成自己的帳號和信箱"
 git config --global user.email "your email"
 ```
-
 
 參考資料：
 
