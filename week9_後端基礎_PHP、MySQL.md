@@ -207,11 +207,13 @@ print_r($arr);
 
 ### phpMyAdmin
 
-可從 `http://localhost:8080` 點選 phpmyadmin 進入介面：
+phpMyAdmin 這是一套基於 PHP 寫的 GUI 資料庫管理軟體，其本質就是一個 PHP 檔案，讓管理者能夠以 GUI 介面來管理 MySQL 資料庫。
+
+可從 `http://localhost:8080` 點選 phpmyadmin 進入：
 
 ![](https://i.imgur.com/1guMNR9.png)
 
-這是用 PHP 寫的 GUI 資料庫管理軟體，其本質就是一個 PHP 檔案，能夠以 GUI 介面來管理資料庫。
+管理介面如下所示：
 
 ![](https://i.imgur.com/hNpYDDJ.png)
 
