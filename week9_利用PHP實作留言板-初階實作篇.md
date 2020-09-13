@@ -83,11 +83,37 @@ require_once("utils.php");     // 導入常用函式
   - `fetch_array()`：讀取資料同時，以數字與欄位名稱各存一次在陣列中
   - `fetch_assoc()`：讀取的資料 Key 值設定為欄位名稱的陣列
   - `fetch_row()`：讀取的資料 Key 值設定為依序的數字
+
+```htmlmixed=
+<?php
+  // 把 $result 資料的 Key 值設定為欄位名稱的陣列
+  while($row = $result->fetch_assoc()) {
+?>
+  <div class="card">
+    <div class="card__avatar"></div>
+    <div class="card__body">
+        <div class="card__info">
+          <span class="card__author"><?php echo $row['nickname']; ?></span>
+          <span class="card__time"><?php echo $row['created_at']; ?></span>
+        </div>
+        <p class="card__content"><?php echo $row['content']; ?></p>
+    </div>
+  </div>
+  <div class="board__hr"></div>
+<?php } ?>
+```
+
+若以 `print_r($row);` 印出上述程式碼，可知 `$row` 為陣列：
+![](https://i.imgur.com/EnxNFAl.png)
+
+
+
 - `isset()`：檢查是否有此變數
 - `empty()`：檢查是否有值
 
 ```php=
 $username = NULL;
+// 如果 session 中沒有存 username，就讀取 session
 if(!empty($_SESSION['username'])) {
   $username = $_SESSION['username'];
 }
@@ -96,7 +122,7 @@ if(!empty($_SESSION['username'])) {
 - `query()`：判斷資料庫查詢是否成功
   - 順利執行回傳 true
   - 查詢的帳密有誤、查詢的指定資料庫、資料表欄位有誤等，均回傳 false
-- `exit()` 和 `die()`：輸出消息後退出程式
+- `exit()` 和 `die()`：兩者幾乎相同，均為輸出消息後退出程式
 
 ```php=
 // 以 id 進行 DESC（遞減）排序："後新增的留言"會排在前面
@@ -232,7 +258,12 @@ $sql = sprintf(
 
 ### 如何使用 Session 
 
-- 儲存 Session
+#### 儲存 Session
+
+當 `$_SEESION` 儲存成功，會進行下列三件事：
+1. 產生 sesseion id (token) 
+2. 把 username 寫入檔案
+3. `set-cookie`: `session-id`
 
 ```php=
 // 使用 Session 時，均需在開頭加上 session_start()
@@ -244,7 +275,13 @@ $username = htmlspecialchars($_POST['username']);
 $_SEESION['username'] = $username;
 ```
 
-- 取出 Session
+#### 讀取 Session
+
+當 `$_SESSION` 讀取資料時，會進行下列三件事：
+
+1. 從 cookie 裡讀取 PHPSESSID (token)
+2. 從檔案裡面讀取 session id 的內容
+3. 把內容放到 `$_SESSION`
 
 ```php=
 session_start();
@@ -255,7 +292,7 @@ if(isset($_SESSION['username'])) {
 }
 ```
 
-- 清除 Session
+#### 清除 Session
 
 ```php=
 session_start();
