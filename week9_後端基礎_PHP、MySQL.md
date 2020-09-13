@@ -207,7 +207,7 @@ print_r($arr);
 
 ### phpMyAdmin
 
-phpMyAdmin 這是一套基於 PHP 寫的 GUI 資料庫管理軟體，其本質就是一個 PHP 檔案，讓管理者能夠以 GUI 介面來管理 MySQL 資料庫。
+phpMyAdmin 是一套基於 PHP 寫的 GUI 資料庫管理軟體，其本質就是一個 PHP 檔案，讓管理者能夠以 GUI 介面來管理 MySQL 資料庫。
 
 可從 `http://localhost:8080` 點選 phpmyadmin 進入：
 
@@ -219,7 +219,7 @@ phpMyAdmin 這是一套基於 PHP 寫的 GUI 資料庫管理軟體，其本質�
 
 ## Table schema 結構簡介
 
-Table schema（資料庫結構）是在開資料庫以前，要先進行資料型態、有無預設值、是否為唯一等設定，而之後的資料均須符合當初設定的結構，否則無法新增。
+Table schema（資料庫結構），當我們在開資料庫以前，要先進行資料型態、有無預設值、是否為唯一等設定，而之後的資料均須符合當初設定的結構，否則會無法成功新增姿笑。
 
 ### 資料型態
 
