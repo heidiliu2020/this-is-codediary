@@ -68,10 +68,6 @@
 
 - 用 `->` 符號：取用物件中的變數
   - 例如：`$conn->error`
-- `echo`：印出變數、字串等
-  - 例如: `echo "hello World"`
-- `print_r()`;：印出物件
-  - 例如：`print_r($row);`
 - `require_once();`：取用資料夾中其他 library
 
 ```php=
@@ -79,10 +75,20 @@ require_once("conn.php");      // 連線到資料庫
 require_once("utils.php");     // 導入常用函式
 ```
 
-- 讀取資料
-  - `fetch_array()`：讀取資料同時，以數字與欄位名稱各存一次在陣列中
-  - `fetch_assoc()`：讀取的資料 Key 值設定為欄位名稱的陣列
-  - `fetch_row()`：讀取的資料 Key 值設定為依序的數字
+#### echo, print_r 與 var_dump 的區別
+
+- `echo`：印出變數、字串等
+  - 例如: `echo "hello World"`
+  - 若使用 echo 輸出引用變數時（如陣列），只會輸出陣列名
+- `print_r()`;：印出物件、陣列
+  - 例如：`print_r($row);`
+- `var_dump`：印出變數型態，作用是輸出變數的詳細資訊
+
+#### 讀取資料
+
+- `fetch_array()`：讀取資料同時，以數字與欄位名稱各存一次在陣列中
+- `fetch_assoc()`：讀取的資料 Key 值設定為欄位名稱的陣列
+- `fetch_row()`：讀取的資料 Key 值設定為依序的數字
 
 ```htmlmixed=
 <?php
@@ -106,7 +112,7 @@ require_once("utils.php");     // 導入常用函式
 若以 `print_r($row);` 印出上述程式碼，可知 `$row` 為陣列：
 ![](https://i.imgur.com/EnxNFAl.png)
 
-
+#### 檢查是否存在
 
 - `isset()`：檢查是否有此變數
 - `empty()`：檢查是否有值
@@ -135,7 +141,7 @@ if (!$result) {
 
 - `sprintf()`：裡面可放入替代字元
 
-用 `sprintf()` 做 SELECT：
+例如使用 `sprintf()` 做 SELECT：
 
 ```php=
 // handle_login.php
