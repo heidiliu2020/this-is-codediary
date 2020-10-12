@@ -3,6 +3,14 @@
 
 > 本篇為 [[FE201] 前端中階：那些前端會用到的工具們](https://lidemy.com/p/fe201) 這門課程的學習筆記。如有錯誤歡迎指正。
 
+## 前言
+
+在使用新工具之前，大致會依照下列步驟：
+1. 安裝工具
+2. 閱讀官方文件
+3. 更改設定檔
+
+---
 
 ## SASS：CSS 預處理器
 
@@ -366,7 +374,7 @@ $direction-typs: (center: center, start: flex-start, end: flex-end)
 - [常用色彩表](http://www.ebaomonthly.com/window/photo/lesson/colorList.htm)
 - [SCSS 筆記(2) - extend、mixin、function](https://icguanyu.github.io/scss/scss_2/)
 
-### 重構檔案
+### 重構檔案流程
 
 - 步驟一：將重複的部分用巢狀方式撰寫
 - 步驟二：將顏色、字體大小，統一使用變數命名 `_variables.sass`
@@ -385,9 +393,14 @@ $direction-typs: (center: center, start: flex-start, end: flex-end)
 
 ## gulp：整合流程
 
+[Gulp](https://gulpjs.com/) 是一個前端任務管理工具
+
+
 ---
 
 ## Webpack：打包程式碼
+
+Webpack 提供了前端開發缺乏的模組化開發方式，將各種靜態資源視為模組，並從它生成最佳化過的程式碼。
 
 ### 如何安裝
 
@@ -402,16 +415,45 @@ npm install webpack webpack-cli --save-dev
 
 ![](https://i.imgur.com/MP3ufbd.png)
 
+### 相關語法
+
+> `dev`：代表開發時才會使用，打包後就不會出現在裡面（記錄在 package.json -> devDependencies）
+
+- 下載 jquery
+
+```
+npm install jquery webpack-cli --save-dev
+```
+
+- css-Loader：用來解析 CSS 檔
+
+```
+npm install --save-dev css-loader
+npm install --save-dev style-loader
+```
+
+- babel-loader
+
+```
+npm install -D babel-loader @babel/core @babel/preset-env
+```
+
+- sass-loader
+
+```
+npm install sass-loader sass webpack --save-dev
+```
+
 ### 執行步驟
 
 - 需要進行編譯的檔案，通常不會直接放在根目錄，而是會先放在 src（source code），使用工具轉換後再放到其他地方。
-- 路徑如下所示：
+- webpack 預設執行檔案路徑如下：
 
 ```
 webpack-demo/src/index.js
 ```
 
-接著以 index.js 引入 utils.js 為例：
+以 index.js 引入 utils.js 為例：
 
 #### utils.js
 
@@ -437,4 +479,82 @@ console.log(utils.first('abc'))
 
 ![](https://i.imgur.com/QmPof6p.png)
 
+接著以 `npx webpack` 執行打包，完成會自動把檔案 main.js 放在資料夾 dist。
 
+若執行檔案 `npm dist/main.js` 仍會得到相同結果：
+
+![](https://i.imgur.com/aE3nKoD.png)
+
+接著在 index.html 引入：
+
+```javascript=
+<script src="dist/main.js"></script>
+```
+
+即可透過 webpack 打包 module，讓我們能夠在瀏覽器上執行使用 require 語法。
+
+### `webpack.config.js`：預設執行檔
+
+在安裝好 loader 後，需設定執行檔，透過指定 rules 來執行檔案：
+
+#### 基本設定
+
+```javascript=
+// webpack.config.js
+const path = require('path')
+
+module.exports = {
+   mode: '',
+  entry: ['./src/index'], // 在 index 檔案後的 .js 副檔名是可選的
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js'
+  }
+}
+```
+
+#### 屬性介紹
+
+- mode：使用的模式。預設為 production，代表正式生產環境版本；開發使用 development 則不會進行壓縮
+- entry：是 bundle 的進入點，entry 是一個陣列。根據需求，webpack 允許可以有多個進入點，來產生多個 bundle 檔案。
+- output：宣告 webpack 輸出的形式
+  - path：存放 bundle 檔案的位置
+  - filename：bundle 檔案名稱
+
+#### 接著以打包 style.css 和 index.js 所需進行的設定為例：
+
+```javascript=
+const path = require('path');
+
+module.exports = {
+  mode: '',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',    // 輸出檔案名稱
+    path: path.resolve(__dirname, 'dist'),　    // 輸出位置
+  },
+  // 載入 loader
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,      // .css 結尾的檔案均使用 css-loader 解析
+        use: ['style-loader', 'css-loader'],
+      },{
+        test: /\.m?js$/,      // .mjs 結尾的檔案均使用 babel-loader 解析
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ],
+  },
+};
+```
+
+參考資料：
+- [webpack 新手教學之淺談模組化與 snowpack](https://blog.huli.tw/2020/01/21/webpack-newbie-tutorial/)
+- [Webpack 初學者教學課程Part1 · Webpack Tutorial 繁體中文](https://neighborhood999.github.io/webpack-tutorial-gitbook/Part1/)
+- [Webpack教學 (一) ：什麼是Webpack? 能吃嗎？](https://medium.com/i-am-mike/%E4%BB%80%E9%BA%BC%E6%98%AFwebpack-%E4%BD%A0%E9%9C%80%E8%A6%81webpack%E5%97%8E-2d8f9658241d)
