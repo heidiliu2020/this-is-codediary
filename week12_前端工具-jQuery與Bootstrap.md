@@ -1,9 +1,9 @@
 ###### tags: `Front-End` `jQuery` `Bootstrap`
-# [week 12] 前端工具 - jQuery 與 Bootstrap
+# [week 12] 前端工具之一 - jQuery 與 Bootstrap
 
 > 本篇為 [[FE201] 前端中階：那些前端會用到的工具們](https://lidemy.com/p/fe201) 這門課程的學習筆記。如有錯誤歡迎指正。
 
-## 什麼是 jQuery
+## jQuery：JS 函式庫
 
 ![](https://i.imgur.com/KKhdOms.png)
 
@@ -177,12 +177,11 @@ $(document).ready(function() {
 
 ---
 
-## Bootstrap
+## Bootstrap：UI Library
 
-[Bootstrap](https://getbootstrap.com/) 是一個由 HTML、CSS 和 JavaScript 寫成的前端框架，提供一整套可重覆使用的元件樣式，例如：字體排印、表單、按鈕、導航及其他各種元件及 Javascript 擴充套件。主要用於創建網站和 Web 應用程式，能幫助快速開發響應式網頁。
+[Bootstrap](https://getbootstrap.com/) 是一個由 HTML、CSS 和 JavaScript 寫成的前端框架，內建多項模組化的版型與元件樣式。例如：字體排印、表單、按鈕、導航及其他各種元件及 Javascript 擴充套件。主要用於創建網站和 Web 應用程式，能幫助快速開發響應式網頁。
 
 參考資料：
 
 - [Bootstrap 是什麼？給網頁設計新手的 Bootstrap 4入門教學](https://tw.alphacamp.co/blog/bootstrap-4-introduction)
 - [Bootswatch](https://bootswatch.com/)：提供各種經過調整顏色的 Bootstrap 版本，可以套用在已有的 Bootstrap 網站上
-
