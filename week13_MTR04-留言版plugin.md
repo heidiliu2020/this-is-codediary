@@ -1,4 +1,6 @@
-# [week 13] MTR04 - 留言版 plugin
+# [week 13] MTR04 - 實作留言版 plugin
+
+> 本篇為 [[MTR04] 第十三週 - 帶著做留言版 plugin](https://lidemy.com/p/mtr04) 的學習筆記。如有錯誤歡迎指正。
 
 ## 前置作業
 
@@ -359,7 +361,7 @@ export function init(options) {
 
 ## 優化程式碼
 
-接著要優化先前寫的程式碼，例如修改 plugin 的 class 名稱避免發生衝突。
+接著要優化先前寫的程式碼，例如修改 plugin 的 class 名稱，避免不同使用者（siteKey）發生衝突。
 
 - 修改 template.js 中的 classname 
 
