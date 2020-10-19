@@ -1,4 +1,4 @@
-###### tags: `back-end` `JavaScript``fetch` `Promise`
+###### tags: `Back-End` `JavaScript` `fetch` `Promise`
 # [week 13] Fetch & Promise 補充
 
 > 本篇為 Limedy「Fetch 與 Promise 補充系列」課程的學習筆記。如有錯誤歡迎指正。
