@@ -51,6 +51,52 @@
 - [什麼是gulp,怎麼使用gulp | 程式前沿](https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/418553/)
 - [前端中階：gulp. 介紹| by Hugh's Program learning | Medium](https://medium.com/@hugh_Program_learning_diary_Js/%E5%89%8D%E7%AB%AF%E4%B8%AD%E9%9A%8E-gulp-791132bea9f1)
 
+## uglify 與 minify
+
+### uglify
+
+- `gulp-uglify`：混淆並壓縮 JavaScript 檔案
+- 壓縮：減少代碼量，減少網絡下載時間以及瀏覽器的解析時間
+- 混淆：藉此提升代碼閱讀難度，有一定程度的保護代碼作用
+
+配置範例：
+
+```javascript=
+let gulp = require('gulp'),               // 載入 gulp
+let gulpUglify = require('gulp-uglify');  // 載入 gulp-uglify
+
+gulp.task('script', function () {
+    gulp.src('javascript/original/*.js')        // 指定要處理的原始 JavaScript 檔案目錄
+        .pipe(gulpUglify())                     // 將 JavaScript 做最小化
+        .pipe(gulp.dest('javascript/minify'));  // 指定最小化後的 JavaScript 檔案目錄
+});
+```
+
+### minify
+
+- `gulp-minify-css`：壓縮 CSS 檔案
+- 壓縮：藉由去掉空格、換行符號等，縮短變數跟 code 長度，以節省瀏覽器 Parse（解析）時間
+- 但更新的版本已經不太適用，改為使用 ` gulp-clean-css`
+
+配置範例：
+
+```javascript=
+let gulp = require('gulp');
+let cleanCSS = require('gulp-clean-css');
+
+gulp.task('minify-css', () => {
+  return gulp.src('styles/*.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist'));
+});
+```
+
+參考資料：
+- [【gulp-uglify】最小化 JavaScript | gulp 學習筆記](http://kejyun.github.io/gulp-learning-notes/plguins/JavaScript/Plugins-JavaScript-gulp-uglify.html)
+- [前端也需要編譯？Transpile、Compile、Minify、Uglify 基本介紹](https://ithelp.ithome.com.tw/articles/10191992)
+- [亦敵亦友的uglify](https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/674625/)
+- [[試著把切版專案升級到 gulp4.0 吧] Day21 CSS 的處理：談壓縮 CSS 與 gulp-clean-css](https://ithelp.ithome.com.tw/articles/10225666)
+
 ---
 
 ## Webpack：打包程式碼
