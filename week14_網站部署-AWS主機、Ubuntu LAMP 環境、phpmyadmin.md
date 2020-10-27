@@ -1,3 +1,4 @@
+###### tags: `Back-End` `網站部署` `AWS` `Ubuntu` `LAMP` `phpmyadmin`
 # [week 14] 網站部署 - 設定 AWS EC2 遠端主機 +  Ubuntu LAMP 環境 + phpMyAdmin
 
 在練習這週的網站部署時，主要參考下列幾篇筆記：
