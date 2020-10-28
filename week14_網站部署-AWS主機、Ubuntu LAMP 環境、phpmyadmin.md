@@ -40,22 +40,25 @@
 ![](https://i.imgur.com/BY8vzW5.png)
 
 1. 註冊 AWS 會員
-2. 進入 AWS 管理控制台
+2. 進入 AWS 管理控制台，右上方的選單可以選擇架設主機的地區（離所在地越近主機速度越快，但相對之下價格也會比較貴）
+
+![](https://i.imgur.com/dKkK0oF.png)
+
 3. 啟動虛擬機器 - 使用 EC2
 
 ![](https://i.imgur.com/PPo4YVf.png)
 
-4. 選擇方案：找到「Ubuntu Server 18.04 LTS (HVM), SSD Volume Type」並點選 Select
+4. 選擇主機 Image 方案：找到「Ubuntu Server 18.04 LTS (HVM), SSD Volume Type」並點選 Select
 
 > Ubuntu 是基於 Debian 的 Linux 發行版，是個免費開源的作業系統。Ubuntu Server 版是為執行伺服端的應用程式而設計的伺服器版本。
 
 ![](https://i.imgur.com/wFjYN6H.png)
 
-5. 選擇有綠色標籤的免費方案，按右下角的 Next，一直到 Step6
+5. 選擇主機等級：選有綠色標籤的免費方案，按右下角的 Next，一直到 Step6
 
 ![](https://i.imgur.com/p7ylYvJ.png)
 
-6. 點選「Add Rule」新增欄位，共需新增兩個，分別是「HTTP 跟 HTTPS」，後面的資料會自動帶入（例如 port 80 和 port 443）
+6. 設定防火牆：也就是允許哪些 IP 連線。點選「Add Rule」新增欄位，共需新增兩個，分別是「HTTP 跟 HTTPS」，後面的資料會自動帶入（例如 port 80 和 port 443）
 
 ![](https://i.imgur.com/2rEWA1g.png)
 
@@ -84,15 +87,23 @@ $ ssh -i "<私鑰檔案路徑>" ubuntu@ec2-< IPv4 位置>.us-east-2.compute.amaz
 
 ---
 
-## 更新 Ubuntu Server
+## 實用指令
+
+### 更新 Ubuntu Server
 
 安裝好 Ubuntu Server 後，需要把更新系統版本到最新，避免遇到安全性漏洞以及程式的 BUG。
 
-CLI 指令如下：
+CLI 指令如下，其中 apt 是用來管理 ubuntu 軟體的程式（可想像成 `npm install`）：
 
 ```=
 $ sudo apt update && sudo apt upgrade && sudo apt dist-upgrade
 ```
+
+### `top`：查看主機即時資訊
+
+會進去下方介面，可查看有哪些 process 在運行、或占用多少 Memory等等。點選 Q 鍵可離開。
+
+![](https://i.imgur.com/zgZtaUB.png)
 
 ---
 
@@ -130,6 +141,10 @@ $ sudo tasksel install lamp-server
 3. 接著確認伺服器是否有成功運行，在瀏覽器輸入剛剛記下伺服器的 IPv4 IP 位置，若看到下方預設網頁就代表安裝成功！
 
 ![](https://i.imgur.com/ednoBoi.png)
+
+- 也可利用 `telnet <IP 位置> <port>` 指令，檢視這個埠是否可使用，出現 Connected 就代表成功：
+
+![](https://i.imgur.com/GRUQNVb.png)
 
 ---
 
