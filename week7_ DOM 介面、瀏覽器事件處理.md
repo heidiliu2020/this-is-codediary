@@ -1,7 +1,22 @@
-###### tags: `JavaScript` `API`
+###### tags: `JavaScript` `API` `DOM`
 # [week 7] DOM 介面、瀏覽器事件處理
 
 > 本篇為 [[FE102] 前端必備：JavaScript](https://lidemy.com/p/fe102-javascript) 這門課程的學習筆記。如有錯誤歡迎指正。
+
+```
+學習目標：
+
+ P1 你知道 JavaScript 跑在網頁上跟跑在 Node.js 上差在哪裡
+ P1 你知道 DOM 是什麼
+ P1 你知道如何用 JavaScript 操控 DOM 物件
+ P1 你知道如何幫一個按鈕加上 event listener
+ P1 你知道捕獲與冒泡是什麼
+ P1 你知道什麼是事件代理（delegation）
+ P2 你知道怎麼用 JavaScript 更改元素的 style
+ P2 你知道 preventDefault 與 stopPropagation 的差異
+```
+
+---
 
 當我們運用 JavaScript 在網頁進行操作時，主要可分為下列三大面向：
 
@@ -132,7 +147,7 @@ document 是瀏覽器提供的特殊物件，內部放著許多 function。而�
 - 直接寫上行內樣式
 
 ```htmlmixed=
-const elements = document.querySelector('.box')
+const element = document.querySelector('.box')
 
 element.style.background = 'red';
 element.style.paddingTop = '10px';         // 駝峰式
@@ -296,6 +311,7 @@ element.addEventListener('click', function(){
 ```
 
 #### 3. useCapture
+
 - 可選
 - 布林值，指定事件在捕獲或冒泡階段執行
   1. true：補獲
