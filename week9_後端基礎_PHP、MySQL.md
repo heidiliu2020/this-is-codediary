@@ -3,6 +3,21 @@
 
 > 本篇為 [[BE101] 用 PHP 與 MySQL 學習後端基礎](https://lidemy.com/p/be101-php-mysql) 這門課程的學習筆記。如有錯誤歡迎指正。
 
+```
+學習目標：
+
+ P1 你知道 PHP 是什麼
+ P1 你知道前端與後端的差別
+ P1 你知道什麼是資料庫
+ P1 你了解基本的 SQL 語法，包括 Select、Insert Into、Delete 與 Update
+ P1 你能夠寫出基本的 CRUD 應用
+ P1 你知道什麼是 Session
+ P1 你知道什麼是 Cookie
+ P1 你知道 Session 與 Cookie 的差別
+```
+
+---
+
 ## 「後端」是什麼？
 
 後端實際上包含以下三大項（括弧內為舉例使用的程式）：
