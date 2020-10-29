@@ -3,6 +3,18 @@
 
 > 本篇為 [[FE101] 前端基礎：HTML 與 CSS](https://lidemy.com/p/fe101-html-css) 這門課程的學習筆記。如有錯誤歡迎指正。
 
+```
+學習目標:
+
+ P1 你知道 CSS 是什麼
+ P1 你知道 inline、block 跟 inline-block 的區別
+ P1 你知道什麼是 box model
+ P1 你知道 position 的所有屬性及其差別
+ P2 你知道 :hover, :before, :after
+ P2 你知道 :nth-child 的各種用法
+ P2 你熟悉 CSS selector，可以輕鬆選到想選到的元素
+```
+
 ## 什麼是 CSS？
 
 Cascading Style Sheets 階層式樣式表
@@ -177,19 +189,32 @@ a:hover {
 
 參考資料：[CSS選取第幾個標籤元素：nth-child(n)、first-child、last-child](https://www.itread01.com/content/1541105823.html)
 
-### CSS 權重計算方式
+### CSS Selector 的權重計算方式
+
+當選擇器作用在同一元素上時：
+
+- 兩個權重不同：權重值高的規則生效
+- 兩個權重相同：後面覆蓋前面
 
 權重由高到低如下：
 
-- !important：權重最高。但在實際開發過程，幾乎不會使用 !important 來覆蓋其他規則
-- inline style 行內樣式
-- id 選擇器
-- class/pseudo class/attribute　類別選擇器
-- tag/pseudo elements 標籤選擇器
+```
+!important > inline style > id > class > tag > *
+```
 
-當選擇器作用在同一元素上時：
-- 兩個權重不同：權重值高的規則生效
-- 兩個權重相同：後面覆蓋前面
+各類選擇器：
+
+- !important：權重最高，但在實際開發過程，幾乎不會使用 !important 來覆蓋其他規則
+- inline style 行內樣式
+  - 權重為 1-0-0-0
+- id 選擇器（`#`）
+  - 權重為 0-1-0-0
+- class 類別選擇器、pseudo class 偽類選擇器、attribute 屬性選擇器
+  - 權重為 0-0-1-0
+- tag 標籤選擇器、pseudo elements 偽元素選擇器
+  - 權重為 0-0-0-1
+- 萬用選擇器（`*`）：選擇所有元素
+  - 預設為 0-0-0-0
 
 參考資料：
 
@@ -456,3 +481,12 @@ flex-wrap: no-wrap;
 flex-wrap: wrap;
 ```
 
+5. 文字跑板問題
+
+- `word-break`：文字斷行效果
+
+`word-break: break-all;`：遇到邊界就換行
+
+- `white-space`：如何處理元素內的空白
+
+`white-space: pre-line;`：自動合併多個空白，但保留換行符號
