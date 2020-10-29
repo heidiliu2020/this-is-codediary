@@ -4,7 +4,8 @@
 > 本篇為 [[FE101] 前端基礎：HTML 與 CSS](https://lidemy.com/p/fe101-html-css) 這門課程的學習筆記。如有錯誤歡迎指正。
 
 ```
-學習目標
+學習目標：
+
  P1 你知道 HTML 是在做什麼的
  P1 你知道如何使用有語意的（semantic）標籤
  P1 你知道基本 SEO 的概念
