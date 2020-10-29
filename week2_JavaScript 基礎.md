@@ -253,7 +253,7 @@ console.log('typeof true', typeof true)
 
 > null 使用 typeof 運算子，回傳的結果會是字串 "object"，這指出 null 可被認為是象徵「無物件」（no object）的一種特殊物件值。（參考資料：[犀牛書](https://www.tenlong.com.tw/products/9789862764411)）
 > 
-> 這實際上是 JavaScript 最初實現中的一個錯誤，然後被 ECMAScript 沿用了。現在，null 被認為是物件的佔位符，從而解釋了這一矛盾
+> 這其實是 JavaScript 最初發現的一個錯誤，然後被 ECMAScript 沿用了。現在，null 被認為是物件的佔位符，從而解釋了這一矛盾
 > （參考資料：[你懂JavaScript 嗎？#4 型別（Types） ](https://ithelp.ithome.com.tw/articles/10200841)）
 
 ---
