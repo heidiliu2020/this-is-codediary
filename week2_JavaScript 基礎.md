@@ -221,24 +221,24 @@ console.log('a:' , a)　　　//　 印出 a:1
 
 ---
 
-## 值的型別
+## 值的型態
 
-### JavaScript 的資料型別可分為：
+### JavaScript 的資料型態可分為：
 
-1. 基本型別（primitive types）
-- boolean（真偽值）：ture 和 false
-- number（數字）：例如 1、3.14159、NaN（無效的數字）
-- string（字串）：例如 `’Hello World’`
+- 原始型態（primitive types）
 
-2. 物件型別（object types）
-- array（陣列）：例如 [1, 2, 3]
-- function（函式）
+1. boolean（真偽值）：ture 和 false
+2. number（數字）：例如 1、3.14159、NaN（無效的數字）
+3. string（字串）：例如 `'Hello World'`
+4. null：沒有值存在（no value）
+5. undefined：值不存在（absence） 
 
-3. 特殊值 null 與 undefined
-- null：沒有值存在（no value）
-- undefined：值不存在（absence）
+- 其他都屬於物件型態（object types）
+1. array（陣列）：例如 [1, 2, 3]
+2. function（函式）
+3. date...etc
 
-### `typeof <value>`：用來判斷參數型別
+### `typeof <value>`：用來判斷參數型態
 
 ```
 console.log('typeof true', typeof true)
