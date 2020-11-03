@@ -1,180 +1,30 @@
-###### tags: `JavaScript` `Scope` `Hoisting` `Variable Object` `TDZ`
-# [week 16] JavaScript 進階 - 初探 Scope & Hoisting
+###### tags: `JavaScript`  `Hoisting` `Execution Context` `Variable Object` `TDZ`
+# [week 16] JavaScript 進階 - 初探 Hoisting & Execution Context
 
 > 本篇為 [[JS201] 進階 JavaScript：那些你一直搞不懂的地方](https://lidemy.com/p/js201-javascript) 這門課程的學習筆記。如有錯誤歡迎指正！
 
 ```
 學習目標：
 
- P1 你知道什麼是作用域（Scope）
- P1 你知道 Hoisting（提升）是什麼
- P1 你知道 Hoisting 的原理為何
+  你知道 Hoisting（提升）是什麼
+  你知道 Hoisting 的原理為何
+  你知道 Hoisting 只會提升宣告而非賦值
+  你知道 function 宣告、function 的參數以及一般變數宣告同時出現時的提升優先順序
+  你知道 let 跟 const 其實也有 Hoisting，只是表現形式不太相同
 ```
-
-## Scope 作用域
-
-Scope（作用域），指的是一個變數的生存範圍。在 ES6 以前，變數 var 的作用域是 function，依照宣告區塊不同，又可分為：
-- 區域變數（Local Variable）：在 function 內宣告的變數
-- 全域變數（Global Variable）：在 function 外宣告的變數
-
-在 ES6 出現以後，作用域的概念概念有些改變，因此這裡先針針對 ES5 的部分進行討論。
-
-### 作用域會往上一層找
-
-在講解之前，先來談談有關變數的作用域：
-
-- 全域變數：會被整個程式碼的任何部份給讀取到，因此也會被 function 讀取
-- 區域變數：只會在該作用域內有效，也有是只會被所在 function 讀取
-
-接著以下列程式碼為例：
-
-```javascript=
-function test() {
-  var a = 10;
-  console.log(a);
-}
-
-test();
-console.log(a);
-// ReferenceError: a is not defined
-```
-
-結果會出現錯誤訊息，在 function 外讀取不到 a 的值。這是因為在 ES6 出現以前，作用域的基本單位是 function，在 function 內才能產生新的作用域。
-
-若改成宣告全域變數，如下方程式碼，會印出全域變數的 `a = 20`：
-
-```javascript=
-var a = 20          // global variable
-function test() {
-  var a = 10;
-  console.log(a);    // 10，test
-}
-
-test();
-console.log(a);      // 20，global
-```
-
-那如果把 function 裡面的宣告變數拿掉，直接賦值呢？
-
-```javascript=
-var a = 20;          // global variable
-function test() {
-  a = 10;
-  console.log(a);    // 10，test -> global
-}
-
-test();
-console.log(a);      // 10
-```
-
-結果會相同，即使在 function 沒有宣告變數，仍會「往上」找到已經被宣告的全域變數 a，然後才賦值 `a = 10`。
-
-這是因為變數會先在自己的作用域找，若找不到才會再往上層，這一連串過程，又稱作「Scope Chain（作用域鏈）」。
-
-那如果連全域變數的宣告也拿掉呢？
-
-```javascript=
-function test() {
-  a = 10;
-  console.log(a);    // 10，test -> global
-}
-
-test();
-console.log(a);      // 10
-```
-
-結果仍相同！這是因為在 function 中如果 a 找不到值，就會自動在全域宣告變數 `var a`。其實這就會和前一個例子寫法產生相同結果，但這樣其實會產生一些 bug，也就是和預期行為不同，甚至可能產生衝突。
-
-## Function Scope 可能發生的問題
-
-### 狀況一：變數的值被覆蓋
-
-若 var 變數不是宣告在 function 作用域內，而是在迴圈或是判斷式，這個變數可能就會覆蓋到外面的全域函數。
-
-在下面的程式碼中，if 判斷式裡面的變數 str，會覆蓋外面的變數 str，因此結果是印出 Local：
-
-```javascript=
-var str = 'Global';
-if (true) {
-  var str = 'Local';
-}
-
-console.log(str);
-// Local
-```
-
-### 狀況二：迴圈變數可能會向外覆蓋全域變數
-
-當 for 迴圈中的變數 i 循環結束時，會蓋過外面的全域變數 i，因為 i 會被重新賦值為 3：
-
-```javascript=
-var str = 'cat';
-var i = 1;
-for (var i = 0; i < str.length; i++) {
-    console.log(str[i]);      // 向外覆蓋全域變數
-}
-
-console.log(i);
-// c
-// a
-// t
-// 3
-```
-
-### E6 以後的 Scope：區塊作用域
-
-接著再回到 ES6，新增了區塊作用域（block scope）的概念，也就是以 let 和 const 來宣告變數。
-
-在第三週的 [ES6 部份](https://github.com/heidiliu2020/this-is-codediary/blob/master/week3_ES6%20npm%20Jest.md#es6-%E6%96%B0%E8%AA%9E%E6%B3%95)我們也曾提到，以 let、const 或 var 方式來宣告變數，最大的差別在於變數的作用域範圍不同：
-
-- var：作用於整個函數範圍中（function scope）
-- let 與 const：均為區塊作用域（block scope），如此可避免污染到大括號外的變數
-
-而 let 和 const 最大的區別，在於該變數是否能被重新賦值：
-
-- const（constant）：常數宣告後就不能再重新賦值，並且在宣告時就必須賦值
-- let：可重新賦值，也可先進行宣告但不賦值
-
-以下為範例，先以 var 來宣告變數 i，for 迴圈結束後，外面的 i 會印出 3：
-
-```javascript=
-function test() {
-  for(var i = 0; i < 3; i++) {
-    console.log('i:', i);
-  }
-  console.log('final value', i);
-}
-
-test()
-// i: 0
-// i: 1
-// i: 2
-// final value 3
-```
-
-但如果改用 let 在 for 迴圈宣告變數呢？
-
-```javascript=
-function test() {
-  for(var i = 0; i < 3; i++) {
-    console.log('i:', i);        // 
-  }
-  console.log('final value', i);
-}
-
-test();
-// ReferenceError: i is not defined
-```
-
-會出現找不到 i 的錯誤訊息，因為以 let 進行宣告，變數 i 的作用域就僅限於 for 迴圈這個 block 區塊。
 
 ---
 
-## Hoisting 提升
+## 什麼是 Hoisting？
 
-Hoisting（提升）會發生在變數宣告。
+如果我們試圖在 JavaScript 中，對一個尚未宣告的變數取值，會出現 `a is not defined` 的錯誤訊息：
 
-首先以下列程式碼做為範例：
+```javascript=
+console.log(a)
+// ReferenceError: a is not defined
+```
+
+但如果在下面加上一行 `var a = 10`，也就是宣告變數 a，神奇的事就發生了：
 
 ```javascript=
 console.log(a);
@@ -189,9 +39,9 @@ a = 10;
 // undefined
 ```
 
-這兩段程式碼其實是相同的。在上方的程式碼中，通常會從上而下執行，但在這個情況下，console.log() 的變數 a 卻能夠先被宣告，也因此不會出現 a 尚未被定義的錯誤訊息。
+我們知道，在 JavaScript 中程式是一行一行執行的。但是在上方程式碼的情況下，console.log() 的變數 a 卻能夠先被宣告，然後輸出 undefined，可以想成下方的程式碼。
 
-而這種情況就叫做 Hoisting（提升）。也就是說，當我們宣告一個變數時，宣告本身會被提升至程式碼最上面，而賦值則留在原處。
+這種現象就叫做 Hoisting（提升），會發生在變數宣告。也就是說，當我們宣告一個變數時，宣告本身會被提升至程式碼最上面，而賦值則留在原處，因此也就不會出現 `a is not defined` 的錯誤。
 
 或是以我們熟悉的宣告 function 為例，就算在宣告以前就先呼叫它，還是能夠順利執行：
 
@@ -202,11 +52,9 @@ function test() {
   console.log(123);
 }
 // 123
-```
 
-其實就和下方的執行結果相同，不管在哪呼叫 function 都能夠執行，因為整段 function 會被提升到上面：
+=== 經過 Hoisting ===
 
-```javascript=
 function test() {
   console.log(123);
 }
@@ -215,7 +63,9 @@ test();
 // 123
 ```
 
-這在有些程式語言其實是做不到的，但在 JavaScript 宣告變數能夠做到提升，也使程式碼撰寫更加方便。
+因為整段 function 會被提升到上面，所以不管在哪呼叫 function 都能夠執行。
+
+這在有些程式語言其實是做不到的，但在 JavaScript 進行宣告能夠做到提升，也使程式碼撰寫更加方便。
 
 ### 只有宣告會提升，賦值不會提升
 
@@ -257,9 +107,9 @@ test = function() {
 
 之所以會出現錯誤，是因為即使經過提升先宣告變數 `var = test`，卻無法先賦值。因此呼叫的 `test()` 其實是 undefined 而非 function，所以執行就會顯示錯誤。
 
-### Hoisting 的順序
+## Hoisting 的順序
 
-#### 情境一：同時宣告函式與變數
+### 情境一：同時宣告函式與變數
 
 那如果同時宣告一個 function 和變數呢？
 
@@ -278,7 +128,7 @@ function a() {
 
 這是因為除了宣告變數以外，function 的宣告也會提升，而且「**function 的提升會優先於變數的提升**」。
 
-#### 情境二：重複的函式
+### 情境二：重複的函式
 
 如果有兩個相同的 function，則會依照順序，提升比較後面宣告的 function：
 
@@ -314,7 +164,7 @@ test();
 // 2
 ```
 
-#### 情境三：傳入參數到 function
+### 情境三：傳入參數到 function
 
 在探討參數之前，先來複習參數和引數的區別：
 
@@ -372,7 +222,7 @@ test(123);  // 參數寫多少都沒用QQ
 // [Function a]
 ```
 
-#### 情境四：宣告變數並賦值
+### 情境四：宣告變數並賦值
 
 但如果是在函式內「宣告變數並賦值」的話，結果就不相同了：
 
@@ -475,7 +325,7 @@ console.log('7.', b);
 
 ---
 
-### 所以為什麼需要 Hoisting？
+## 所以為什麼需要 Hoisting？
 
 至於我們為什麼會需要 Hoisting 呢？這個問題其實可以倒過來思考：「假如沒有 Hoisting 會怎麼樣？」
 
@@ -520,21 +370,23 @@ loop(10);
 
 ## Hoisting 的運作原理
 
-在瞭解什麼是 Hoisting，還有為什麼需要 Hoisting 之後，接著我們來探討：Hoisting 究竟是如何運作的？
+在瞭解什麼是 Hoisting，還有我們為什麼需要 Hoisting 之後，接著就來探討：「Hoisting 究竟是如何運作的？」
 
 這部分可參考 JavaScript 所遵循的標準 [ECMAScript](https://zh.wikipedia.org/wiki/ECMAScript) 規格書，因為後期版本規格眾多，這裡以 [ES3 規格書](https://www-archive.mozilla.org/js/language/E262-3.pdf)當作範例。
 
 其實在 ES3 的規則中，並出現沒有 Hoisting 這個詞，與此現象有關的段落出現在第十章：Execution Contexts（執行環境，以下部分內容簡稱 EC）。
 
-### 什麼是執行環境？
+### 什麼是 Execution Context？
 
 在 JavaScript 中，可執行的 JS 程式碼可分成三種型別：
 
 1. Global Code：全域性的，不在任何函式裡面的程式碼
 2. Function Code：在自定義函式中的程式碼
-3. Eval Code：使用 eval() 函式動態執行的程式碼，但因為有兼容性與安全問題，JavaScript 並不推薦使用
+3. Eval Code：使用 eval() 函式動態執行的程式碼，但因為有兼容性與安全問題，JavaScript 並不推薦使用，這裡先不討論
 
-因此執行環境可分為三種，以下要來探討的是全域執行環境和函式執行環境：
+當 JavaScript 開始執行時，根據執行的程式碼型別，程式碼必須被執行在這三種環境之一，也就是 Execution Context（執行環境）。
+
+以下要來探討的是全域執行環境和函式執行環境：
 
 - 全域執行環境（Global Execution Context）
   - 當執行 JavaScript 時，會先建立的第一層執行環境
@@ -580,9 +432,9 @@ JavaScript 在調用一個執行環境時，其實會經過兩個階段：
 
 ---
 
-## 執行環境物件
+## Execution Context Object 執行環境物件
 
-前面也曾提到，執行環境負責存放該環境需要用到的各種資料，我們可以把執行環境想像成一個物件，又被稱作執行環境物件（Execution context object）。
+前面也曾提到，執行環境負責存放該環境需要用到的各種資料，我們可以把執行環境想像成一個物件，又被稱作執行環境物件（Execution Context Object）。
 
 而每個執行環境物件會有下列三個屬性：
 
@@ -598,7 +450,7 @@ executionContextObject = {
     // 變數物件 + 所有父代執行環境物件的變數物件
   },
   variableObject: { 
-    // 函式的參數，內部的變數和函式
+    // 函式的參數、內部的變數和函式
   },
   this: {
     //
@@ -606,7 +458,7 @@ executionContextObject = {
 }
 ```
 
-### Variable Object 變數物件（VO）
+## Variable Object 變數物件（VO）
 
 以下是 ECMA [10.1.3 Variable Instantiation](https://www.ecma-international.org/archive/ecmascript/1999/TC39WG/990220-es2_func.pdf) 對於 Variable Object 的解釋：
 
@@ -614,7 +466,7 @@ executionContextObject = {
 
 意思是說，每一個執行環境都會有一個相對應的變數物件（Variable Object），這個物件負責記錄執行環境中定義的變數和函式。
 
-而執行函式所創造的執行環境中，則會把參數（parameters）也加進去變數物件中，也就是活化成執行物件（Activation Object），這部分我們後面會再提到。
+而執行 function 所創造的執行環境中，則會把參數（parameters）也加進去變數物件中，也就是活化成執行物件（Activation Object），這部分我們後面章節會再提到。
 
 那麼，Variable Object 實際上是如何運作的呢？我們可從 JavaScript 執行流程談起。
 
@@ -637,7 +489,7 @@ executionContextObject = {
 
 以下舉簡單的範例進行說明。
 
-#### 範例：宣告變數 `var a = 123` 
+### 範例：宣告變數 `var a = 123` 
 
 這句會分成兩部分：
 
@@ -654,15 +506,15 @@ VO: {
 
 > 至於 VO 是如何找到屬性 a，則是會透過透 Scope chain 不斷往上層找，如果每一層都找不到就會出現錯誤訊息。這過程中涉及的部分較廣，因此我們先不進行討論。
 
-#### 範例：在 function 傳入一個參數 123
+### 範例：在 function 傳入一個參數 123
 
 程式碼如下：
 
 ```javascript=
 function test(a, b) {
-  console.log(a, b)
+  console.log(a, b);
 }
-test(123)
+test(123);
 // 123, undefined
 ```
 
@@ -673,12 +525,12 @@ VO 模型如下：
 
 ```javascript=
 VO: {
-  a: 123,
-  b: undefined,
+  a: 123,   // 把參數放進 VO，初始化成 123
+  b: undefined,   // 把變數放進 VO，初始化成 undefined
 }
 ```
 
-#### 範例： 在 function 中宣告另一個 function
+### 範例： 在 function 中宣告一個 function
 
 程式碼如下：
 
@@ -688,7 +540,7 @@ function test(a, b){
   }
   var c = 30;
 }
-test(123)
+test(123);
 ```
 
 1. 宣告 function 一樣會在 VO 裡面新增一個屬性
@@ -706,7 +558,7 @@ VO: {
 
 對於宣告變數，則會在 VO 裡面新增一個屬性並且把值設為 undefined，如上述範例中的 `var c` 但如果 VO 已經有這個屬性時，值不會被改變。
 
-#### 小結
+### 小結
 
 由上方幾個範例可知，當我們進入一個 EC，但還沒開始執行 function 以前，會先建立 Variable Object，並按照順序進行以下三件事：
 
@@ -714,15 +566,15 @@ VO: {
 2. 把 function 宣告放到 VO 裡，如果已經有同名的就取代之
 3. 把變數宣告放到 VO 裡，如果已經有同名的則忽略
 
-#### 最後再來個牛刀小試
+### 最後再來個牛刀小試
 
 ```javascript=
 function test(v){
-  console.log(v)      // 10
-  var v = 3
-  console.log(v)      // 3
+  console.log(v);      // 10
+  var v = 3;
+  console.log(v);      // 3
 }
-test(10)
+test(10);
 ```
 
 思考方式：
@@ -732,57 +584,61 @@ test(10)
 3. 執行到第三行，把變數 v 的值換成 3
 4. 執行到第四行，印出 3
 
+---
+
 ## TDZ：Temporal Dend Zone 暫時死區
 
 接著再回到 let 和 const，其實以 let 和 const 宣告變數同樣會有 Hoisting 的情形，只是執行方式不太相同。
 
-先以下列程式碼為例，結果會出現錯誤訊息：
+先以下列程式碼為例，和文章最一開始的 `var a` 不同，結果出現 `a is not defined` 的錯誤：
 
 ```javascript=
-console.log(a) // ReferenceError: a is not defined
-let a
+console.log(a); // ReferenceError: a is not defined
+let a;
 ```
 
-這樣是不是代表 let 和 const 沒有變數提升呢？否則經過提升後不會出現 Error 才對。
+這樣是不是代表 let 和 const 沒有變數提升呢？否則宣告經過提升後應該不會出現 Error 才對？
 
-事實上，let 與 const 確實有 Hoisting，與 var 的差別在於提升之後，var 宣告的變數會被初始化為 undefined；而 let 與 const 的宣告不會被初始化為 undefined，如果在「賦值之前」就存取它，就會拋出錯誤。
+事實上，let 與 const 確實有 Hoisting，與 var 的差別在於提升之後，var 宣告的變數會被初始化為 undefined；而 let 與 const 的宣告則不會被初始化為 undefined，如果在「賦值之前」就存取它，會拋出錯誤訊息。
 
-簡單來說，如果是在「提升之後」以及「賦值之前」這段期間存取變數就會拋出錯誤，而這段期間就稱作 TDZ（Temporal Dend Zone），中文為「暫行性死去」或「暫時死區」，是一個為了解釋 let 與 const 的 Hoisting 行為所提出的名詞。
+簡單來說，如果是在「提升之後」以及「賦值之前」這段期間存取變數就會拋出錯誤，而這段期間就稱作 TDZ（Temporal Dend Zone），中文為「暫行性死去」或「暫時死區」，是為了解釋 let 與 const 的 Hoisting 行為所提出的一個名詞。
 
 再來看以下範例：
 
-
 ```javascript=
-var a = 10
+var a = 10;
 function test() {
-  console.log(a)
-  let a = 30
+  console.log(a);
+  let a = 30;
 }
-test()
+test();
 // ReferenceError: Cannot access 'a' before initialization
 
 === 經過 Hoisting ===
 
-var a = 10
+var a = 10;
 function test() {
-  let a           // undefined
-  console.log(a)  // 在賦值之前不能存取 a
-  a = 30
+  let a;           // 宣告變數 a 經過提升之後
+  console.log(a);  // 在賦值之前不能存取 a
+  a = 30;
 }
-test()
+test();
 ```
 
-假如 let 沒有 Hoisting，答案應該會是 10 才會，因為 log 那一行會存取全域變數的 `var a = 10`，但實際上卻印出 `錯誤：無法在初始化之前存取變數 a`。
+同理可證，假如 let 沒有 Hoisting，結果應該會印出 10 才會，因為 log 那一行會存取全域變數的 `var a = 10`，但是卻印出 `錯誤：無法在初始化之前存取變數 a`。這是因為 let 的確有提升，只是沒有初始為 undefined。
 
-總結上述例子，let 與 const 確實也有 hoisting 行為，但沒有初始化為 undefined，且如果在賦值之前存取該值會發生錯誤。
+總結上述例子：
+- let 與 const 宣告確實也有 Hoisting 行為，但沒有像 var 宣告初始化為 undefined
+- 如果在提升之後，賦值之前這段期間，存取該值會發生錯誤
+- 這段期間稱為 Temporal Dend Zone（暫時死區）
 
 ---
 
 ## 結語
 
-從理解 Scope（作用域）到 Hoisting（提升），再延伸到提升的運作原理，當中的 Execution Contexts（執行環境）、與之對應的 Variable Object（變數物件）等等，其實涉及到有關 JavaScript 的知識範圍非常廣。
+從理解什麼是 Hoisting（提升），瞭解我們位什麼需要提升，再延伸到運作原理。過程中建立的 Execution Contexts（執行環境）、與之對應的 Variable Object（變數物件）等等，其實涉及到有關 JavaScript 的知識範圍非常廣。
 
-除了課堂影片提到的內容，自己也上網查了許多有關執行環境和提升的資料，雖然花費不少時間，卻也藉由瞭解 JavaScript 的編譯與執行過程，建立執行環境的流程，加深對整個架構的理解。
+除了課堂影片提到的內容，自己也上網查了許多有關執行環境、執行堆疊的資料，雖然花費不少時間，卻也藉由瞭解 JavaScript 的編譯與執行過程，從建立到執行階段，加深對整個架構的理解。
 
 參考資料：
 
