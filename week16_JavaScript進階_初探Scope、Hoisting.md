@@ -403,7 +403,7 @@ loop(10);
 
 ### 呼叫 & 執行堆疊（Call Stack）
 
-因為 JavaScript 是[單執行緒](https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B)的程式語言，用白話文解釋就是「JavaScript 一次只能做一件事情」，因此 JS 中等待執行的任務會被放入堆疊（Stack）
+因為 JavaScript 是[單執行緒](https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B)的程式語言，用白話文解釋就是「JavaScript 一次只能做一件事情」，因此 JS 中等待執行的任務會被放入 Call Stack。
 
 JavaScript 在調用一個執行環境時，其實會經過兩個階段：
 
