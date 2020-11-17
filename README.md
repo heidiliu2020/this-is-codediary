@@ -4,7 +4,7 @@ This is Heidi's codediary. About Lidemy / mentor-program-4th started from June 2
 All of these were written on HackMD, and also synchronized on GitHub page.
 
 本篇是關於 Lidemy 程式導師實驗計畫第四期的學習筆記清單。
-主要使用 HackMD 平台，也會將筆記同步至[Github 頁面](https://github.com/heidiliu2020/this-is-codediary)。
+主要使用 [HackMD 平台](https://hackmd.io/@Heidi-Liu/note-lidemy)，也會將筆記同步至[Github 頁面](https://github.com/heidiliu2020/this-is-codediary)。
 
 Week1（06/12 ~ 06/21）：暖身週
 ---
