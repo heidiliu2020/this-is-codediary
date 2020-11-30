@@ -1,4 +1,4 @@
-###### tags: `React` `state` `props`
+###### tags: `React` `state` `hooks`
 # [week 21] React Hooks API：useState & 再戰 Todo List
 
 > 本篇為 [[FE302] React 基礎 - hooks 版本](https://lidemy.com/p/fe302-react-hooks) 這門課程的學習筆記。如有錯誤歡迎指正！
