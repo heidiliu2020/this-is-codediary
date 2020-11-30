@@ -25,9 +25,15 @@
 - class compent：透過 class 寫成，可以控制 state 和生命週期
 - function compent：透過 function 寫成，主要用來呈現 UI
 
-因為加入了 React hooks，結合 props、state、context、refs 以及 lifecycle 等概念，提供了更直接的 API 使用，讓我們能在 functional component 管理狀態和使用生命周期等功能，藉此簡化程式碼與提高重用性。
+### hook 其實就是 function
 
-引入 hook 的語法如下，原本要寫成 React.useState，透過解構語法即可直接使用 useState：
+根據[官方文件](https://zh-hant.reactjs.org/docs/hooks-overview.html)：
+
+> hook 是 function，讓我們可以從 function component「hook into」React state 與生命週期功能。
+
+也就是說，React 因為加入了 hooks，再結合 props、state、context、refs 以及 lifecycle 等概念，提供了更直接的 API 使用，讓我們能在 functional component 管理狀態和使用生命周期等功能，藉此簡化程式碼與提高重用性。
+
+引入 hook 的語法如下，原本要寫成 React.useState，透過 ES6 解構語法即可直接使用 useState：
 
 ```javascript=
 import { useState, useEffect, useRef } from 'react'; 
@@ -158,7 +164,21 @@ function App() {
 
 ### useRef：用來抓取 DOM 節點的 hook
 
-透過宣告 `id = useRef(2)`，可以在每次 render 時，更改每個 todo 中 id.current 的值：
+基本用法：
+
+```javascript=
+const refContainer = useRef(initialValue);
+```
+
+根據[官方文件](https://zh-hant.reactjs.org/docs/hooks-reference.html#useref)介紹：
+
+> useRef 回傳一個可變的 ref object，期 .current 屬性被初始為傳入的參數（initialValue）。回傳的 object 在 component 的生命週期將保持不變。
+
+簡單來說，useRef 是可持有 mutable（可變的）值、具有 .current 屬性的「盒子」，並具有以下特性：
+- 當 .current 屬性有變動時不會觸發重新 render
+- 在每次 render 時都會給同一個的 ref object
+
+我們可透過宣告 `id = useRef(2)`，就能夠在每次 render 時，更改每個 todo 中 id.current 的值：
 
 ```javascript=
 function App() {
@@ -211,6 +231,13 @@ export default function TodoItem({ content, todo }) {
     </TodoItemWrapper>
   );
 }
+
+===上方寫法等同於===
+
+function TodoItem() {
+  // ...
+}
+export default TodoItem;
 ```
 
 ### 刪除 todo
