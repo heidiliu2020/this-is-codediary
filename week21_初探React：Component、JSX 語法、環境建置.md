@@ -142,7 +142,9 @@ JSX 語法和 template engine 不同，在使用上沒有那麼自由，必須�
 
 ### 包在標籤中間的 props：children
 
-在 React component 中，包在標籤中間的東西，稱為 children，children 也是一個 props，以 Todoitem 為例：
+在 React component 中，包在標籤中間的東西，稱為 children，children 也是一個 props。
+
+以 Todoitem 為例，這裡的 children 指的就是 `Watch a movie`：
 
 ```javascript=
 function Todoitem({n, children}) {
