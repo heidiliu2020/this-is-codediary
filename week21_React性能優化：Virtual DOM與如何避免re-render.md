@@ -1,4 +1,4 @@
-###### tags: `React` 
+###### tags: `React` `Virtual DOM` 
 # [week 21] React 性能優化：Virtual DOM & 如何避免 re-render
 
 > 本篇為 [[FE302] React 基礎 - hooks 版本](https://lidemy.com/p/fe302-react-hooks) 這門課程的學習筆記。如有錯誤歡迎指正！
@@ -176,6 +176,6 @@ MVVM 結構是以 MVP 作為基礎進行改良，將原來的 Presenter 進化�
 直到 React 出現，解決思路就是「當 Model 發生改變時直接重新渲染 View」，引入 Virtual DOM 的概念。透過 JavaScript 物件來描述 DOM 結構，產生當下 Model 對應的 Virtual DOM 結構，再和上次的 Virtual DOM 結構透過 Diff 演算法比較，再將兩者差異建立在真實 DOM 上。
 
 
-## 結論
+## 結語
 
 其實關於 React 優化，還是不太瞭解該如何使用 hooks 來避免重新渲染，只有大概瞭解原理，還有並不是所有情況都是用性能優化。除非是在大型專案，需要進行昂貴的計算才可能會用到，因此這部分等之後有機會再來深入研究。
