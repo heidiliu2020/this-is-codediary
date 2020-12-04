@@ -4,7 +4,7 @@ This is Heidi's codediary. About Lidemy / mentor-program-4th started from June 2
 All of these were written on HackMD, and also synchronized on GitHub page.
 
 本篇是關於 Lidemy 程式導師實驗計畫第四期的學習筆記清單。
-主要使用 [HackMD 平台](https://hackmd.io/@Heidi-Liu/note-lidemy)，也會將筆記同步至[Github 頁面](https://github.com/heidiliu2020/this-is-codediary)。
+主要使用 [HackMD 平台](https://hackmd.io/@Heidi-Liu/note-lidemy)，也會將筆記同步至[Github 頁面](https://github.com/heidiliu2020/this-is-codediary) 以及[個人網誌](https://heidiliu2020.github.io/)。
 
 Week1（06/12 ~ 06/21）：暖身週
 ---
@@ -86,7 +86,8 @@ Week14（09/14 ~ 09/20）：伺服器與網站部署
 
 Week15（09/21 ~ 09/27）：複習週
 ---
-- [link text](https:// "title")
+- [【中場心得】半年過去了，我仍在學習程式的路上（上篇）](https://hackmd.io/@Heidi-Liu/about-learing-part1)
+- [【中場心得】半年過去了，我仍在學習程式的路上（下篇）](https://hackmd.io/@Heidi-Liu/about-learing-part2)
 
 Week16（09/28 ~ 10/04）：JavaScript 核心與物件導向
 ---
@@ -101,7 +102,10 @@ Week16（09/28 ~ 10/04）：JavaScript 核心與物件導向
 
 Week17（10/05 ~ 10/11）：現代後端開發（上）
 ---
-- 
+- [[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁](https://hackmd.io/@Heidi-Liu/note-be201-express-node)
+- [[week 17] 後端中階 - Express 中不可或缺的拼圖：淺談 Middleware](https://hackmd.io/@Heidi-Liu/note-be201-express-middleware)
+- [[week 17] 後端中階 - Express 實戰：簡易會員註冊系統 & 留言板](https://hackmd.io/@Heidi-Liu/note-be201-express-practice)
+- [[week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資料庫](https://hackmd.io/@Heidi-Liu/note-be201-sequelize)
 
 Week18（10/12 ~ 10/18）：現代後端開發（下）
 ---
@@ -109,7 +113,7 @@ Week18（10/12 ~ 10/18）：現代後端開發（下）
 
 Week19（10/19 ~ 10/25）：產品開發流程
 ---
-- 
+- [[week 19] 淺談產品開發與工作流程](https://hackmd.io/@Heidi-Liu/note-pd101)
 
 Week20（10/26 ~ 11/01）：複習週
 ---
@@ -117,6 +121,16 @@ Week20（10/26 ~ 11/01）：複習週
 
 Week21（11/02 ~ 11/08）：前端框架（一）
 ---
+
+- [[week 21] 前端框架 - 先別急著學 React](https://hackmd.io/@Heidi-Liu/note-fe302-review)
+- [[week 21] 初探 React：Component、JSX 語法、環境建置](https://hackmd.io/@Heidi-Liu/note-fe302-component-jsx)
+- [[week 21] React 基礎：style & 如何撰寫 CSS](https://hackmd.io/@Heidi-Liu/note-fe302-style)
+- [[week 21] React Hooks API：useState & 再戰 Todo List](https://hackmd.io/@Heidi-Liu/note-fe302-hooks-usestate)
+- [[week 21] React Hooks API：useEffect & 實作一個自己的鉤子](https://hackmd.io/@Heidi-Liu/note-fe302-hooks-useeffect)
+- [[week 21] React 性能優化：Virtual DOM & 如何避免 re-render](https://hackmd.io/@Heidi-Liu/virtual-dom)
+- [[week 21] 再探 React：Function component vs Class component](https://hackmd.io/@Heidi-Liu/note-fe302-class-component)
+- [[week 21] 補充：在 React 使用 PropTypes 進行型別檢查](https://hackmd.io/@Heidi-Liu/note-be302-proptypes)
+- [[week 21] 補充：Prettier 套件 - 自動整理程式碼格式](https://hackmd.io/@Heidi-Liu/note-prettier)
 
 Week22（11/09 ~ 11/15）：前端框架（二）
 ---
