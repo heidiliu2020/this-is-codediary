@@ -72,6 +72,9 @@
 
 因此，並不是所有專案都適合用 React 進行開發，應該根據網站需求去決定合適的工具。
 
+參考資料：
+- [React 教學 - React JavaScript UI Library](https://www.fooish.com/reactjs/)
+
 ---
 
 ## 初探 React
@@ -279,6 +282,13 @@ ReactDOM.render(
 ```
 
 ![](https://i.imgur.com/gX8yUJ5.png)
+
+參考資料：
+- [React State - React 教學Tutorial - Fooish 程式技術](https://www.fooish.com/reactjs/state.html)
+- [React Day5 - state 與 setState](https://ithelp.ithome.com.tw/articles/10185095)
+- [React的props與state](https://ithelp.ithome.com.tw/articles/10210221)
+- [【DAY 04】React！說，Props是誰啊？](https://ithelp.ithome.com.tw/articles/10200640)
+- [【Day 6】Child Component && Props](https://ithelp.ithome.com.tw/articles/10214495)
 
 ---
 
