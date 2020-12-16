@@ -1,5 +1,5 @@
 ###### tags: `React` 
-# [week 22] React：用 SPA 架構實作一個部落格（三）- 淺談測試
+# [week22] React：用 SPA 架構實作一個部落格（三）- 淺談測試
 
 > 本篇為 [[FE302] React 基礎 - hooks 版本](https://lidemy.com/p/fe302-react-hooks) 這門課程的學習筆記。如有錯誤歡迎指正！
 
