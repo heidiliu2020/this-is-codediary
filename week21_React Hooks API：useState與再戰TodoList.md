@@ -110,11 +110,20 @@ function App() {
 
 ![](https://i.imgur.com/f6EsvhC.png)
 
-#### controlled vs uncontrolled
+### controlled vs uncontrolled
 
 > 詳細可參考[官方文件](https://zh-hant.reactjs.org/docs/forms.html#controlled-components)。
 
-在 React 中，所有在 UI 上會動的東西幾乎都是 state，我們也能夠進行控制。
+在 React 中，表單元素的處理可分為 uncontrolled 和 controlled，兩者之間的差別，在於 component 的資料是否受到 React 的控制：
+
+- uncontrolled component：資料不受 React 的控制
+  - 例如 input、textarea 等表單元素，通常會維持本身的 state，並根據使用者的輸入來更新該元素的 state
+  - 若想取得 uncontrolled component 的值，可透過直接操作 DOM 或使用 useRef 來選取特定元素
+- controlled component：資料受到 React 的控制 
+  - 如果將資料的控制權交給 React 來處理，畫面就會根據 state 是否改變來重新渲染
+
+參考文章：
+- [[Day 27 - 即時天氣] React 中的表單處理（Controlled vs Uncontrolled）以及 useRef 的使用](https://ithelp.ithome.com.tw/articles/10227866)
 
 ---
 
@@ -341,7 +350,7 @@ export default function TodoItem({ content, todo, handleDeleteTodo }) {
 除了三元運算子，也可改寫成邏輯運算子 && 的寫法，適用於多種可能的情況：
 
 ```javascript=
-  <Button onClick={handleTogglerClick}>
+  <Button onClick={handleToggleClick}>
     {todo.isDone && '已完成'}
     {!todo.isDone && '未完成'}
   </Button>
@@ -369,16 +378,16 @@ export default function TodoItem({ content, todo, handleDeleteTodo }) {
 
 ```javascript=
   {
-    todos.map(todo => <TodoItem key={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo} handleTogglerIsDone={handleTogglerIsDone}/> ) 
+    todos.map(todo => <TodoItem key={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo} handleToggleIsDone={handleToggleIsDone}/> ) 
   }
 ```
 
 由 TodoItem 接收參數，可以把 click 事件抽出來寫，相較於原本的 inline function，能夠提高程式碼的可讀性：
 
 ```javascript=
-export default function TodoItem({ todo, handleDeleteTodo, handleTogglerIsDone }) {
-  const handleTogglerClick = () => {
-    handleTogglerIsDone(todo.id);
+export default function TodoItem({ todo, handleDeleteTodo, handleToggleIsDone }) {
+  const handleToggleClick = () => {
+    handleToggleIsDone(todo.id);
   }
 
   const handleDeleteClick = () => {
@@ -389,7 +398,7 @@ export default function TodoItem({ todo, handleDeleteTodo, handleTogglerIsDone }
     <TodoItemWrapper data-todo-id={todo.id}>
       <TodoContent $isDone={todo.isDone}>{todo.content}</TodoContent>
       <TodoButtonWrapper>
-        <Button onClick={handleTogglerClick}>
+        <Button onClick={handleToggleClick}>
           {todo.isDone ? '已完成' : '未完成'}
         </Button>
         <RedButton onClick={handleDeleteClick}>刪除</RedButton>
@@ -540,6 +549,8 @@ const [currentValue, setCurrentValue] = useState(initialValue);
   }
 ```
 
+
+### 
 
 ---
 
