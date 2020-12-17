@@ -268,7 +268,7 @@ npm install react-spinners --save
 
 ### 官方使用範例
 
-適用 class component 去寫的，但其實概念和 function component 沒有差太多，狀態就從 app.js 設定的 isLoading 去判斷即可：
+官方範例是用 class component 去寫的，但其實概念和 function component 沒有差太多，狀態就從 App.js 設定的 isLoading 去判斷即可：
 
 ```javascript=
 import React from "react";
