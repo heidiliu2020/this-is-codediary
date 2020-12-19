@@ -11,6 +11,13 @@
 
 但在 React 16.8 有了 Hooks 以後，就能夠在  Function component 引入 Hooks 來表示狀態，這種寫法也成為目前主流。
 
+而 class component 與 function component 兩者之間的差別主要在於：
+
+- class component：關注的是這個「生命週期」要做什麼，
+- function component：每一次 render，都是「重新」呼叫一次 function，並且會記住「當下」傳入的值
+
+---
+
 ## 什麼是 Class component？
 
 顧名思義，就是用 class 去實作一個 component，但這種寫法比起 function component，其實需要具備 JavsScript 物件導向的相關知識。
@@ -396,11 +403,27 @@ export default class Counter extends React.PureComponent
 
 React 會自動進行優化，加上 shouldComponentUpdate 判斷，當 props 裡面的屬性有變動時才會進行 update，沒有的話就不進行 re-render。
 
+
+
+--
+
 ## 結語
 
-根據上述範例，我們能夠發現 class component 和 function component 雖然是用不同方式寫成的 component，背後的概念其實差蠻多的，需要轉變想法。
+在實作 React 時，會瞭解到 class component 和 function component 用不同方式去思考如何建立 component，背後的概念其實差蠻多的，需要轉變成另一種想法。
 
-在 class component 關注的是在這個生命週期要做什麼；function component 則是把許多 method 都寫在 function 中，自己本身就像是 render function，至於生命週期的方法，以 useEffect 來決定 render 要做的事情。
+最後再簡單記錄 class component 和 function component 兩者之間的差異：
+
+### class component 
+
+- 透過 ES6 語法來實作物件導向的 class component
+- 由於 this 指向的關係，state 和 props 會拿到最新的結果，但是會較不易於進行 callback 操作
+- 提供許多 lifecycle method 使用，方便管理較複雜的 component 狀態
+
+### function component 
+
+- 透過閉包的形式來管理狀態的 function component
+- 把許多 method 都寫在 function 中，自己本身就像是 render function，較容易抽出共同邏輯，或是進行模組化測試
+- 生命週期的方法，是以 useEffect 來決定 render 要做的事情
 
 參考文章：
 - [[React] 生命週期（life cycle）](https://pjchender.github.io/2018/08/29/react-%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F%EF%BC%88life-cycle%EF%BC%89/)
