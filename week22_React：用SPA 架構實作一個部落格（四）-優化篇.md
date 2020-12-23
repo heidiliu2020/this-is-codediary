@@ -3,6 +3,8 @@
 
 在完成部落格的基本功能之後，再來要進行優化的部分，也就是解決畫面閃爍的問題。
 
+[部落格 DEMO](https://heidiliu2020.github.io/react-blog-test/#/)
+
 ## 一、處理登入狀態的畫面閃爍
 
 在 [[week 22] React：用 SPA 架構實作一個部落格（二）- 身分驗證](https://hackmd.io/@Heidi-Liu/note-fe302-react-blog-login) 這篇筆記中，有提到登入狀態時，重整頁面會出現畫面閃爍的問題，之所以會有這個現象，是因為畫面進行了兩次 render：
