@@ -1,10 +1,12 @@
 # Lidemy 程式導師計畫第四期 - 每週學習筆記
 
-This is Heidi's codediary. About Lidemy / mentor-program-4th started from June 2020.
-All of these were written on HackMD, and also synchronized on GitHub page.
-
 本篇是關於 Lidemy 程式導師實驗計畫第四期的學習筆記清單。
-主要使用 [HackMD 平台](https://hackmd.io/@Heidi-Liu/note-lidemy)，也會將筆記同步至[Github 頁面](https://github.com/heidiliu2020/this-is-codediary) 以及[個人網誌](https://heidiliu2020.github.io/)。
+
+主要使用 [HackMD 平台](https://hackmd.io/@Heidi-Liu/note-lidemy)記錄，同時也會將筆記同步至 [Github](https://github.com/heidiliu2020/this-is-codediary) 與[個人 Blog](https://heidiliu2020.github.io/)。
+
+This is Heidi's codediary. About Lidemy / mentor-program-4th started from June 2020.
+
+All of these were written on HackMD, and also synchronized on GitHub page.
 
 Week1（06/12 ~ 06/21）：暖身週
 ---
@@ -109,7 +111,7 @@ Week17（10/05 ~ 10/11）：現代後端開發（上）
 
 Week18（10/12 ~ 10/18）：現代後端開發（下）
 ---
-- 
+Loading...
 
 Week19（10/19 ~ 10/25）：產品開發流程
 ---
@@ -117,7 +119,7 @@ Week19（10/19 ~ 10/25）：產品開發流程
 
 Week20（10/26 ~ 11/01）：複習週
 ---
-- 
+Loading...
 
 Week21（11/02 ~ 11/08）：前端框架（一）
 ---
@@ -128,19 +130,25 @@ Week21（11/02 ~ 11/08）：前端框架（一）
 - [[week 21] React Hooks API：useState & 再戰 Todo List](https://hackmd.io/@Heidi-Liu/note-fe302-hooks-usestate)
 - [[week 21] React Hooks API：useEffect & 實作一個自己的鉤子](https://hackmd.io/@Heidi-Liu/note-fe302-hooks-useeffect)
 - [[week 21] React 性能優化：Virtual DOM & 如何避免 re-render](https://hackmd.io/@Heidi-Liu/virtual-dom)
-- [[week 21] 再探 React：Function component vs Class component](https://hackmd.io/@Heidi-Liu/note-fe302-class-component)
-- [[week 21] 補充：在 React 使用 PropTypes 進行型別檢查](https://hackmd.io/@Heidi-Liu/note-be302-proptypes)
 - [[week 21] 補充：Prettier 套件 - 自動整理程式碼格式](https://hackmd.io/@Heidi-Liu/note-prettier)
+- [[week 21] 補充：在 React 使用 PropTypes 進行型別檢查](https://hackmd.io/@Heidi-Liu/note-be302-proptypes)
 
 Week22（11/09 ~ 11/15）：前端框架（二）
 ---
 
+- [[week 22] 再探 React：Function component vs Class component](https://hackmd.io/@Heidi-Liu/note-fe302-class-component)
+- [[week 22] React：用 SPA 架構實作一個部落格（一）- Router](https://hackmd.io/@Heidi-Liu/note-fe302-react-router)
+- [[week 22] React：用 SPA 架構實作一個部落格（二）- 身分驗證](https://hackmd.io/@Heidi-Liu/note-fe302-react-blog-login)
+- [[week 22] React：用 SPA 架構實作一個部落格（三）- 淺談測試](https://hackmd.io/@Heidi-Liu/note-fe302-react-blog-test)
+- [[week 22] React：用 SPA 架構實作一個部落格（四）- 優化篇](https://hackmd.io/@Heidi-Liu/note-fe302-react-blog-optimization)
+
 Week23（11/16 ~ 11/22）：前端框架（三）
 ---
+Loading...
 
 Week24（11/23 ~ 11/29）：前端框架（四）
 ---
-
+Loading...
 
 Others
 ---
