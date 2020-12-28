@@ -185,3 +185,7 @@ search:
 結果如下：
 
 ![](https://i.imgur.com/uPH9x7S.png)
+
+## 結語
+
+在之前寫的[【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌](https://heidiliu2020.github.io/2020/11/07/hexo-github/) 這篇，提到該如何更換 theme 主題，到現在終於生出來XD 主要還是因為自己想要更換背景，卻忘記當初是怎麼自定義樣式的，結果又繞了點遠路，果然整理過後的知識才是自己的，寫起來就不怕忘記啦！
