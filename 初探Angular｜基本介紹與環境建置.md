@@ -28,23 +28,29 @@ Angular 是由 Google 開發，基於 TypeScript 編寫的 JavaScript 前端框�
 
 Angular App 主要由這八個元素構成：
 
-* Metadata 描述資料
-  * 在 `@Component` 裝飾器函式中，用於描述該元件的附加資料
+* Metadata 元資料、描述資料
+  * 在 `@Component`、`@NgModule` 裝飾器函式中，用於描述該元件的附加資料
+  * 元資料中指定的樣式只會作用於該元件
 * Template：模板，呈現畫面
-  * 權重：template input variable = template reference variable > component variable
-* Component：元件
-  * Directive + Template 結合的產物
+  * 權重：Template Input Variable（模板輸入變數）= Template Reference Variable（模板參考變數） > Component Variable
+* Component：元件，為最小 UI 單位
+  * Directive + Template 的組合
 * Dependency Injection：倚賴注入
   * DI 是一種 Design Pattern，為了將功能集中，減少相依性的設計模式
 * Service：服務，針對特定事情處理邏輯
 * Directive：指令，有三種呈現形式
+  * Component 元件，擁有樣板的指令
   * Structural Directive 結構指令
+    * 修改檢視結構
+    * 如：`*ngFor`、`*ngIf`、`NgSwitch`，星號是用來簡化復雜語法的「語法糖」
   * Attribute Directive 屬性指令
+    * 改變元素的外觀或行為
+    * 如：`NgClass`、`NgStyle`、`NgModel`
 * Data Binding：資料綁定
-  * proerty binding 屬性單向綁定
-  * event binding 事件單向綁定
-  * two way binding 屬性與事件雙向綁定
-* Module：模組，打包功能
+  * Property Binding 屬性單向綁定
+  * Event Binding 事件單向綁定
+  * Two Way Binding 屬性與事件雙向綁定
+* Module：模組，打包功能以實現功能模組化
 
 參考資料：
 - [Angular小教室 - 用Note List了解頁面基本元素 (基礎篇)](https://github.com/marshal604/blog/issues/2)
@@ -77,13 +83,13 @@ $ npm install -g @angular/cli
 
 ![](https://i.imgur.com/vT0Tdas.png)
 
-如果在 mac 上安裝失敗，指令必須加上 `sudo` 切換成管理員帳戶才有權限安裝：
+如果是在 mac 系統，指令必須加上 `sudo`，切換成管理員帳戶才有權限安裝：
 
 ```
 $ sudo npm install -g @angular/cli
 ```
 
-可輸入 `ng version` 或是 `ng v` 指令查看版本資訊，確認是否安裝成功：
+可輸入 `ng version` 或是 `ng v` 指令查看版本資訊，確認是否安裝成功，畫面如下：
 
 ![](https://i.imgur.com/uKEUiSA.png)
 
@@ -102,25 +108,6 @@ $ ng new my-app
 ![](https://i.imgur.com/kQvlGXB.png)
 
 除了透過 NPM 安裝必要套件，還會利用 Git 進行版本控制，並完成第一次提交（commit）。
-
-建立專案內容如下：
-
-- 根目錄 my-app：一個新的 workspace
-- src/：主要開發原始碼
-  - app/：整個網頁應用程式的 Module、Component、Service
-  - assets/：圖片等靜態資源
-  - environments/：環境變數設定檔
-- e2e/：E2E 測試的程式碼
-- browserslist：用來定義專案支援的瀏覽器與版本
-- angular.json：Angular CLI 設定檔
-- karma.conf.js：[Karma](https://karma-runner.github.io/3.0/index.html) 設定檔，用來進行單元測試，專案建立時會預設使用這套工具
-- tsconfig.json：TypeScript 編譯設定檔
-- tslint.json：TSLint 設定檔，為 TypeScript 的格式驗證工具，提高程式碼可讀性、偵測功能性錯誤
-- 其他相關配置檔案
-
-![](https://i.imgur.com/YAtLAJT.png)
-
-> 詳細結構可參考這篇：[[Angular 深入淺出三十天] Day 04 - 資料夾結構說明](https://ithelp.ithome.com.tw/articles/10203534)。
 
 ### 第三步：啟動開發伺服器
 
@@ -146,6 +133,57 @@ $ ng serve --open
 
 ![](https://i.imgur.com/tda1vFZ.png)
 
+## 預設專案架構
+
+> 詳細可參考這篇：[[Angular 深入淺出三十天] Day 04 - 資料夾結構說明](https://ithelp.ithome.com.tw/articles/10203534)。
+
+建立好 Angular 專案之後，預設架構如下：
+
+![](https://i.imgur.com/YAtLAJT.png)
+
+- 根目錄 my-app：一個新的 workspace
+- 子目錄 src/：主要開發原始碼
+  - app/：包含整個網頁應用程式的 Module、Component、Service
+  - assets/：圖片等靜態資源
+  - environments/：環境變數設定檔
+- 子目錄 e2e/：E2E 測試的程式碼
+- browserslist：用來定義專案支援的瀏覽器與版本
+- angular.json：Angular CLI 設定檔
+- karma.conf.js：[Karma](https://karma-runner.github.io/3.0/index.html) 設定檔，用來進行單元測試，專案建立時會預設使用這套工具
+- tsconfig.json：TypeScript 編譯設定檔
+- tslint.json：TSLint 設定檔，為 TypeScript 的格式驗證工具，提高程式碼可讀性、偵測功能性錯誤
+- 其他相關配置檔案
+
+### 從建立 Component 開始
+
+透過 Angular CLI 提供的指令，我們能快速建立一個專案架構，其中最常使用 ng generate 來產生 Component、Service、Pipe 等檔案的程式碼。
+
+指令如下：
+
+```
+$ ng generate component <name>
+```
+
+或簡化成：
+
+```
+$ ng g c <name>
+```
+
+舉例來說，如果要建立一個叫做 todo-list 的 Component，指令是 `ng g c todo-list`，接著 Angular 就會建立四個檔案，以及更新 app.module.ts：
+
+![](https://i.imgur.com/HDeeSVB.png)
+
+* todo-list.component.html：模板 Template
+* todo-list.component.spec.ts：執行 ng test 命令會透過 Karma 進行測試
+* todo-list.component.ts：元件 Component
+* todo-list.component.css：樣式
+
+## 小結
+
+因為工作需要，而開始接觸 Angular 這套前端框架，卻也了解到這套工具涵括的功能種類眾多！
+
+雖然一時半刻還無法消化，但其實也不是說剛開始就要完全了解，有些概念還是和 React 有相似之處，總之就先跟著官網提供的[練習指南](https://angular.tw/tutorial)，一步一步跟著實作，慢慢踏入 Angular 的世界！
 
 參考資料：
 - [Angular 全集中筆記 系列](https://ithelp.ithome.com.tw/users/20109645/ironman/3762)
