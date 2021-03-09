@@ -13,24 +13,26 @@
 
 資料綁定（Data Binding）是 Angular 用來協調 Component（TypeScript）與 Template（HTML）互相傳遞資料的機制，依照方向性的不同，可分為四種綁定方式：
 
-- 插值 Interpolation
+- 內嵌綁定/插值（Interpolation）
     - `{{value}}`
-- 屬性綁定 Property Binding
-    - `[property] = 'value'`
-- 事件綁定 Event Binding
-    - `(event) = 'someMethod($event)'`
-- 雙向綁定 Two-Way Binding
+- 屬性綁定（Property Binding）
+    - `[propertyName] = 'value'`
+    - `[attr.attributeName] = 'value'`
+- 事件綁定（Event Binding）
+    - `(eventName) = 'someMethod($event)'`
+    - `(eventName.key) = 'someMethod($event)'`
+- 雙向綁定（Two-Way Binding）
     - `[(ngModel)] = 'property'`
 
 前三種均屬於單向綁定（One-Way Binding）；第四種雙向綁定，則是屬性綁定加上事件綁定的組合。
 
 <br/>
 
-### 插值：Component 變數→Template 值
+## 內嵌綁定（插值）
 
-- 又稱為內嵌綁定
+- 單向性：value 改變 HTML 跟著變
+  - Component 變數→Template 值
 - 使用方法：直接在 HTML 中插入變數 `{{value}}`
-- 單向：value 改變 HTML 跟著變
 
 以下為範例：
 
@@ -55,10 +57,11 @@ export class AppComponent {
 }
 ```
 
-### 屬性綁定：Component 變數→Template 值
+## 屬性綁定
 
+- 單向性：value 改變會影響 property，HTML 跟著改變
+  - Component 變數→Template 值
 - 使用方法：在 HTML 中的屬性加上 `[property]="value"`
-- 單向：value 改變會影響 property，HTML 跟著改變
 
 以下為範例：
 
@@ -112,6 +115,8 @@ export class TodoListComponent implements OnInit {
 - Attribute property：CSS 屬性
 
 ```htmlmixed=
+[attr.attributeName] = "statement"
+
  <label [attr.contenteditable]="!todo.done"></label>
 ```
 
@@ -127,10 +132,11 @@ export class TodoListComponent implements OnInit {
 <li [ngClass]="{completed: todo.done}"></li>
 ```
 
-### 事件綁定：Template 發送事件→Component 呼叫方法
+## 事件綁定
 
+- 單向性：一旦觸發指定 event，就會呼叫 TypeScript 中的 someMethod 方法
+  - Template 發送事件→Component 呼叫方法
 - 使用方法：在 HTML 中的加入 `(event)="someMethod()"`
-- 單向：一旦觸發指定 event，就會呼叫 TypeScript 中的 someMethod 方法
 
 以下為範例：
 
@@ -159,11 +165,15 @@ export class AppComponent {
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-### 雙向綁定：Component ⇄ Template 
+   
+   
+## 雙向綁定：屬性 + 事件
 
-- 是屬性綁定與事件綁定的組合
+> [()] 符號口訣：Banana is in the Box!（香蕉在箱子裡）
+
+- 雙向性：Component 或 Template 其中一方的值改變，另一方也會跟著變
+  - Component ⇄ Template 
 - 使用方法：在 HTML 加入 `[(ngModel)]` 語法，使用前需要先在 AppModule 引用 FormsModule
-- 雙向：Component 或 Template 其中一方的值改變，另一方也會跟著變
 - 通常用於 `<input>`、`<textarte>` 等表單元素
 
 以新增 Todo 功能為例：
@@ -278,6 +288,27 @@ NgClass 與 NgStyle 是 Angular 提供的指令，可用來動態改變 DOM 元�
 <input [ngStyle]="{'border': hasBorder, 'color': colorProp}">
 <input [ngStyle]="hasColorBorder">
 ```
+
+至於優缺點，以下方程式碼為例：
+
+- 動態使用單一樣式
+  - 可讀性高
+
+```htmlmixed=
+<li [class.completes]="todo.isDoing"
+    [class.editing]="todo.isEditing">
+</li>
+```
+
+- 動態使用多種樣式
+  - 可一次表達多種樣式
+
+```htmlmixed=
+<li [ngClass]="{completed: todo.isDone, editing: todo.isEditing}" >
+</li>
+```
+
+兩者可達成相同效果，依照需求和習慣選用即可！
 
 參考資料：
 
