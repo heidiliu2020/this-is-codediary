@@ -1,3 +1,4 @@
+[![hackmd-github-sync-badge](https://hackmd.io/_q5WFK3LQL-JHMBnv07IzQ/badge)](https://hackmd.io/_q5WFK3LQL-JHMBnv07IzQ)
 ###### tags: `RxJS`
 # 【學習筆記】RxJS - 封裝程式的藝術
 
@@ -623,7 +624,7 @@ mouseClick$
 
 ![](https://i.imgur.com/asnKEUk.png)
 
-+ 更多 Unit Test 教學，可參考這篇：[如何替 RxJS 撰寫測試 - 一般測試與彈珠圖測試方法](https://ithelp.ithome.com.tw/articles/10253844?sc=hot)
++ 更多 Unit Test 教學，可參考這篇：[如何「畫圖」寫測試 - RxJS Marble Test](https://blog.jerry-hong.com/speaking/rxjs-marble-testing/)
 
 
 ## 結語
