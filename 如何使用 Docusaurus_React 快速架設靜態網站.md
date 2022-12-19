@@ -1,3 +1,5 @@
+ [![](https://img.shields.io/badge/blog-heidi-yellowgreen)](https://heidiliu2020.github.io/docusaurus-react-blog/) [![hackmd-github-sync-badge](https://hackmd.io/xM0LI_7bSdSf8wGNiAbqcQ/badge)](https://hackmd.io/xM0LI_7bSdSf8wGNiAbqcQ)
+
 ###### tags: `Docusaurus` `React` `blog`
 # 【學習筆記】如何使用 Docusaurus & React 快速架設靜態網站
 
