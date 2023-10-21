@@ -1,4 +1,5 @@
-###### tags: `Advertising` `Google` `Ads` `AdSense` 
+[![hackmd-github-sync-badge](https://hackmd.io/O-uaRkbhSd2BpWp60j8AZg/badge)](https://hackmd.io/O-uaRkbhSd2BpWp60j8AZg)
+###### tags: `Google` `Ads` `AdSense` `Advertising` 
 # Google 廣告｜比較 Google Ads、AdSense、AdMob 和 Ad Manager 的區別
 
 ![](https://hackmd.io/_uploads/rkobid-yT.png)
@@ -9,7 +10,7 @@
 
 在網路資訊爆炸的時代，不論是創業到經營品牌，或是透過副業多媒體賺取分潤，都與廣告產業脫離不了關係。好比外食族必備的 Google 地圖上顯示的推薦店家、佔據 Facebook 等社群大半版面的贊助廣告，或是搜尋引擎名列上位的關鍵字結果等等，廣告早已深深融入我們的生活當中。
 
-這次負責專案需要研究投放廣告的主題，剛好之前有稍微摸過 Google AdSense，有在部落格試著開通 Google AdSense 服務，雖然目前的成果還微乎其微，一方面觀察流量的同時，也期許未來能夠持續透過知識的累積，為自己賺取額外的零用錢XD
+這次負責專案需要研究投放廣告的主題，剛好之前有稍微摸過 Google AdSense，有在[部落格](https://heidiliu2020.github.io/)試著開通 Google AdSense 服務，雖然目前的成果還微乎其微，一方面觀察流量的同時，也期許未來能夠持續透過知識的累積，為自己賺取額外的零用錢XD
 
 ## 廣告主與發布商
 
@@ -31,7 +32,7 @@
 - Google Ads、Youtube 是讓廣告主（Advertiser）用來投放廣告的平台
 - Google AdSense、Google AdMob、Google Ad Manager 則是讓發布商（Publisher）決定要如何刊登廣告的平台
 
-## **各產品的差異**
+## 各產品的差異
 
 以下比較幾項 Google 提供廣告相關的服務：
 
