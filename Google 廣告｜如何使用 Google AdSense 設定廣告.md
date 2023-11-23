@@ -1,3 +1,4 @@
+[![hackmd-github-sync-badge](https://hackmd.io/EwH1vtFiRQK4D1xR7FGYBA/badge)](https://hackmd.io/EwH1vtFiRQK4D1xR7FGYBA)
 ###### tags: `Google` `AdSense` `Advertising` 
 # Google 廣告｜如何使用 Google AdSense 設定廣告
 
