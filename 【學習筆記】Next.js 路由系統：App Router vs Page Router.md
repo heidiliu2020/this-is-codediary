@@ -1,5 +1,8 @@
 # 【學習筆記】Next.js 路由系統：App Router vs Page Router
 
+[![hackmd-github-sync-badge](https://hackmd.io/Q8Wd_vHkSzCVXgtSVZw0Vw/badge)](https://hackmd.io/Q8Wd_vHkSzCVXgtSVZw0Vw)
+
+
 ![Parallel Routes](https://hackmd.io/_uploads/SkK9xkWqp.png)
 > Ref: [Next.js - Parallel Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#streaming)
 
