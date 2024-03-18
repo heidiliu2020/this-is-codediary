@@ -1,3 +1,4 @@
+[![hackmd-github-sync-badge](https://hackmd.io/fufpeNLzSu-Wgut0fBOg2w/badge)](https://hackmd.io/fufpeNLzSu-Wgut0fBOg2w)
 ###### `Front-End` `React` `Next.js` 
 # 【學習筆記】如何修復 "Window is not defined" error in Next.js
 
