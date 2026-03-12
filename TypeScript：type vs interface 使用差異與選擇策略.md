@@ -1,10 +1,10 @@
 ---
-title: TypeScript：`type` vs `interface` 使用差異與選擇策略
+title: TypeScript：type vs interface 使用差異與選擇策略
 tags: [TypeScript, type, interface]
 
 ---
 
-# TypeScript：`type` vs `interface` 使用差異與選擇策略
+# TypeScript：type vs interface 使用差異與選擇策略
 
 [toc]
 
@@ -275,7 +275,7 @@ TypeScript 官方的 [Performance Wiki](https://github.com/microsoft/TypeScript/
 - [Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html)
 - [Declaration Merging — Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)
 - [Classes — implements Clauses](https://www.typescriptlang.org/docs/handbook/2/classes.html#implements-clauses)
-# TypeScript：`type` vs `interface` 使用差異與選擇策略
+# TypeScript：type vs interface 使用差異與選擇策略
 
 [toc]
 
