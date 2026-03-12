@@ -6,6 +6,9 @@ tags: [TypeScript, type, interface]
 
 # TypeScript：type vs interface 使用差異與選擇策略
 
+[![hackmd-github-sync-badge](https://hackmd.io/nGYiwPWXRvKBQGI4H6izJA/badge)](https://hackmd.io/nGYiwPWXRvKBQGI4H6izJA)
+
+
 [toc]
 
 在 TypeScript 中，`type`（型別別名）與 `interface`（介面宣告）都可以用來描述資料的型別結構。
@@ -276,6 +279,9 @@ TypeScript 官方的 [Performance Wiki](https://github.com/microsoft/TypeScript/
 - [Declaration Merging — Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)
 - [Classes — implements Clauses](https://www.typescriptlang.org/docs/handbook/2/classes.html#implements-clauses)
 # TypeScript：type vs interface 使用差異與選擇策略
+
+[![hackmd-github-sync-badge](https://hackmd.io/nGYiwPWXRvKBQGI4H6izJA/badge)](https://hackmd.io/nGYiwPWXRvKBQGI4H6izJA)
+
 
 [toc]
 
